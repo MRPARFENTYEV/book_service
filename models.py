@@ -19,7 +19,9 @@ class Book(Base):
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     title = sqlalchemy.Column(sqlalchemy.String(length=100), unique=True)
-    id_publisher = sqlalchemy.Column(sqlalchemy.Integer,sqlalchemy.ForeignKey("publisher.id"))
+    id_publisher = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("publisher.id"))
+    publisher = relationship(Publisher,backref="books")
+
 
     # publisher = relationship(Publisher, backref="books")
     # publisher = relationship(Publisher, back_populates='books')
@@ -38,6 +40,8 @@ class Stock(Base):
     id_book = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("book.id"))
     id_shop = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("shop.id"))
     count = sqlalchemy.Column(sqlalchemy.Integer)
+    book = relationship(Book, backref="stocks")
+    shop = relationship(Shop, backref="shops")
 
 class Sale(Base):
     __tablename__ = "sale"
@@ -46,7 +50,7 @@ class Sale(Base):
     date_sale = sqlalchemy.Column(sqlalchemy.Date)
     id_stock = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("stock.id"))
     count = sqlalchemy.Column(sqlalchemy.Integer)
-
+    stock = relationship(Stock, backref="sales")
 
 
 
