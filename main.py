@@ -34,29 +34,32 @@ sale4 = Sale(price=490, date_sale='02-11-2022', stock=stock4, count=500)
 stock5 = Stock(count=580, book=book1, shop=shop1)
 sale5 = Sale(price= 600, date_sale='26-10-2022', stock=stock4, count=590)
 
-session.add(publisher1)
-session.add(book1)
-session.add(shop1)
-session.add(stock1)
-session.add(sale1)
+# session.add_all([publisher1,book1,shop1,stock1,sale1]) '
+# session.add_all([publisher2,book2,stock2,sale2])
+# session.add_all([shop3,stock3,sale3])
+# session.add_all([book4,shop4,stock4,sale4])
+# session.add_all([stock5,sale5])
+#
 
-session.add(publisher2)
-session.add(book2)
-session.add(stock2)
-session.add(sale2)
+# def book_title():
+#     book_title = input("Какую книгу ищите?:")
+#     for title_of_book in session.query(Book).filter(Book.title.like(book_title)).all():
+#         print(title_of_book)
+# book_title()
+# def shop_name():
+#     for name in session.query(Shop).all():
+#         return (name)
+#
+# def price_and_data():
+#     for data in session.query(Sale).all():
+#         return (data)
+
+for a in session.query(Shop).join(Stock.shop).all():
+    print(a)
+for c in session.query(Book).join(Stock.book).all():
+    print(c)
 
 
-session.add(shop3)
-session.add(stock3)
-session.add(sale3)
-
-session.add(book4)
-session.add(shop4)
-session.add(stock4)
-session.add(sale4)
-
-session.add(stock5)
-session.add(sale5)
 
 session.commit()
 
