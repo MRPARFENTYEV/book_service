@@ -57,7 +57,7 @@ class Sale(Base):
     count = sqlalchemy.Column(sqlalchemy.Integer)
     stock = relationship(Stock, backref="sales")
     def __str__(self):
-        return f"стоимость покупки:{self.price}, дата покупки: {self.date_sale} "
+        return f"Cтоимость покупки:{self.price}, дата покупки: {self.date_sale} "
 
 
 

@@ -34,12 +34,12 @@ sale4 = Sale(price=490, date_sale='02-11-2022', stock=stock4, count=500)
 stock5 = Stock(count=580, book=book1, shop=shop1)
 sale5 = Sale(price= 600, date_sale='26-10-2022', stock=stock4, count=590)
 
-# session.add_all([publisher1,book1,shop1,stock1,sale1]) '
-# session.add_all([publisher2,book2,stock2,sale2])
-# session.add_all([shop3,stock3,sale3])
-# session.add_all([book4,shop4,stock4,sale4])
-# session.add_all([stock5,sale5])
-#
+session.add_all([publisher1,book1,shop1,stock1,sale1]) '
+session.add_all([publisher2,book2,stock2,sale2])
+session.add_all([shop3,stock3,sale3])
+session.add_all([book4,shop4,stock4,sale4])
+session.add_all([stock5,sale5])
+
 
 def find_book_title_shop_name_sale_date_by_publisher_name():
     publisher_name = input("Издатель:")
@@ -65,7 +65,7 @@ def find_book_title_shop_name_sale_date_by_publisher_id():
             Publisher.id == publisher_id).all():
         print(Shop_name)
     for sale_date in session.query(Sale).join(Stock).join(Book).join(Publisher).filter(
-                Publisher.id == publisher_id).all():
+            Publisher.id == publisher_id).all():
 
         print(sale_date)
 #
@@ -74,7 +74,7 @@ def how_do_you_want_to_search():
     if inputable_data == 'id':
         print(find_book_title_shop_name_sale_date_by_publisher_id())
     else:
-        print(find_book_title_shop_name_sale_date_by_publisher_name())
+        print(find_book_title_shop_name_sale_date_by_publisher_name)
 
 how_do_you_want_to_search()
 
