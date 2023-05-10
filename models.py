@@ -33,6 +33,7 @@ class Shop(Base):
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     name = sqlalchemy.Column(sqlalchemy.String(length=50), unique=True)
+
     def __str__(self):
         return f"Название магазина: {self.name}"
 
@@ -56,7 +57,7 @@ class Sale(Base):
     count = sqlalchemy.Column(sqlalchemy.Integer)
     stock = relationship(Stock, backref="sales")
     def __str__(self):
-        return f"Sale: стоимость покупки:{self.price}, дата покупки: {self.date_sale} "
+        return f"стоимость покупки:{self.price}, дата покупки: {self.date_sale} "
 
 
 

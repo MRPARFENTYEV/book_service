@@ -41,23 +41,23 @@ sale5 = Sale(price= 600, date_sale='26-10-2022', stock=stock4, count=590)
 # session.add_all([stock5,sale5])
 #
 
-# def book_title():
-#     book_title = input("Какую книгу ищите?:")
-#     for title_of_book in session.query(Book).filter(Book.title.like(book_title)).all():
-#         print(title_of_book)
-# book_title()
-# def shop_name():
-#     for name in session.query(Shop).all():
-#         return (name)
-#
-# def price_and_data():
-#     for data in session.query(Sale).all():
-#         return (data)
+def find_book_title_shop_name_sale_date():
+    publisher_name = input("Издатель:")
 
-for a in session.query(Shop).join(Stock.shop).all():
-    print(a)
-for c in session.query(Book).join(Stock.book).all():
-    print(c)
+    for book_title in session.query(Book).join(Publisher).filter(Publisher.name.like(publisher_name)).all():
+        print(book_title)
+
+    for Shop_name in session.query(Shop).join(Stock.shop).join(Book).join(Publisher).filter(
+            Publisher.name.like(publisher_name)).all():
+        print(Shop_name)
+    for sale_date in session.query(Sale).join(Stock).join(Book).join(Publisher).filter(
+                Publisher.name.like(publisher_name)).all():
+
+        print(sale_date)
+#
+find_book_title_shop_name_sale_date()
+
+
 
 
 
