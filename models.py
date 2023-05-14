@@ -22,10 +22,6 @@ class Book(Base):
     def __str__(self):
         return f"Название книги: \n{self.title}"
 
-
-    # publisher = relationship(Publisher, backref="books")
-    # publisher = relationship(Publisher, back_populates='books')
-
 class Shop(Base):
     __tablename__ = "shop"
 
