@@ -7,7 +7,6 @@ class Publisher(Base):
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     name = sqlalchemy.Column(sqlalchemy.String(length=50), unique=True)
-    # books = relationship("Book", back_populates='publisher')
     def __str__(self):
         return f'{self.id}:{self.name}'
 
