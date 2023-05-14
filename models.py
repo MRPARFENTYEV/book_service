@@ -2,8 +2,6 @@ import sqlalchemy
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
-
-
 class Publisher(Base):
     __tablename__ = "publisher"
 
@@ -58,13 +56,6 @@ class Sale(Base):
     stock = relationship(Stock, backref="sales")
     def __str__(self):
         return f"Cтоимость покупки:{self.price}, дата покупки: {self.date_sale} "
-
-
-
-
-
-
-
 
 def create_tables(engine):
     Base.metadata.create_all(engine)
