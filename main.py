@@ -1,6 +1,7 @@
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 from config import DSN
+# config это файл с логинами и паролями, он в gitignorе
 from models import create_tables, Publisher, Book, Shop, Stock, Sale
 
 engine = sqlalchemy.create_engine(DSN)
